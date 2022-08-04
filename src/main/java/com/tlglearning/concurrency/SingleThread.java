@@ -15,7 +15,7 @@ public class SingleThread implements Computation {
   public double geometricMean(int[] data) {
     double logSum = 0;
     for (int value : data) {
-      logSum += Math.log(value);
+      logSum += Math.log(value);//NOTE taking the logarithm base of each number and adding to the sum.
     }
     return Math.exp(logSum / data.length);
   }

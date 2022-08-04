@@ -43,7 +43,7 @@ public class ComputationTest {
   @ParameterizedTest
   @ValueSource(classes = {SingleThread.class, RaceCondition.class, CriticalSection.class,
       Reduction.class, ForkJoin.class})
-  void geometricMean(Class<? extends Computation> implementation)
+  void geometricMean(Class<? extends Computation> implementation)//Multiples numbers together and takes the root of that.
       throws ReflectiveOperationException {
     Computation computation = newInstance(implementation);
     double expected = generator.geometricMean();
