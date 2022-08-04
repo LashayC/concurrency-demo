@@ -2,11 +2,13 @@ package com.tlglearning.concurrency;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class CriticalSection implements Computation {
 
   private static final int NUM_THREADS = 4;
 
+  private final Object lock = new Object(); //NOTE now can use this Object as a lock.
   private double logSum;
 
   @Override
@@ -49,8 +51,11 @@ public class CriticalSection implements Computation {
     return worker; //NOTE now returning a thread that has ben started.
   }
 
-  private synchronized void update(int data) { //NOTE created so Threads now wait turns to update logSum
-    logSum += Math.log(data);
+  private void update(int data) { //NOTE method created so Threads now wait turns to update logSum
+    double logData = Math.log(data); //NOTE this can still be completed in parallel for speed, below, nadaaaa.
+    synchronized (lock) { //NOTE you can just make the exact part that you need a Critical Section so that Threads access one at a time.
+      logSum += logData;
+    }
   }
 
 
