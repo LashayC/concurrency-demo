@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class RaceCondition implements Computation {
-  //NOTE this was called a RaceCondition bc when you run it you get the wrong value. When a thread goes to update logSum, before it can save, another thread overwrites it. Wrong ending sum.
+  //NOTE this was called a RaceCondition bc when you run it you get the wrong value. When a thread goes to update logSum, before it can save, another thread overwrites it. Wrong ending sum. (5 sec)
   private static final int NUM_THREADS = 4;
 
   private double logSum;

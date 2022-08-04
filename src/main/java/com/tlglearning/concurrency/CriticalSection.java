@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CriticalSection implements Computation {
-
+//NOTE Critical Section says that you're going to have threads run parallel and update logSum on turns. Slow because each thread is updating sum millions of times before finishing.
   private static final int NUM_THREADS = 4;
 
   private final Object lock = new Object(); //NOTE now can use this Object as a lock.
@@ -44,6 +44,7 @@ public class CriticalSection implements Computation {
       for (int i = startIndex; i < endIndex; i++) {
         update(data[i]); //NOTE extracted out to method to isolate logSum update.
       }
+
     };
 
     Thread worker = new Thread(work); //NOTE creating Thread around work Runnable created above.
